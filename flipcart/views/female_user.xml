@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_flipcart_femaleusers_tree" model="ir.ui.view">
+        <field name="name">flipcart.femaleusers.tree</field>
+        <field name="model">flipcart.users</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="user_id"/>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="contact"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_flipcart_femaleusers_form" model="ir.ui.view">
+        <field name="name">flipcart.femaleusers.form</field>
+        <field name="model">flipcart.users</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="gender"/>
+                            <field name="contact"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_flipcart_femaleusers_search" model="ir.ui.view">
+        <field name="name">flipcart.femaleusers.search</field>
+        <field name="model">flipcart.users</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="user_id"/>
+                <field name="name"/>
+                <filter name="filter_archived" string="Archived" domain="[('active','=',False)]"/>
+                <group>
+                    <filter name="groupby_name" string="Name" context="{'group_by':'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_flipcart_female_user" model="ir.actions.act_window">
+        <field name="name">Female User</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">flipcart.users</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('gender','=','female')]</field>
+        <field name="help" type="html">
+            <p>
+                Create a Users..!!!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_flipcart_female_user"
+              name='Female Users'
+              parent="menu_flipcart_users"
+              action="action_flipcart_female_user"
+              sequence="2"/>
+</odoo>

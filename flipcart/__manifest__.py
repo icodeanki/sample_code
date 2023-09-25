@@ -1,0 +1,21 @@
+{
+    'name': 'Flipcart',
+    'version': '1.0.0',
+    'category': 'Retail',
+    'author': 'Ankita',
+    'summary': 'Retail Management System',
+    'description': """Retail Management System.""",
+    'depends': ['base','sale'],
+    'data' : [
+        "security/ir.model.access.csv",
+        "views/menu.xml",
+        "views/female_user.xml",
+    ],
+    'demo': [],
+    'sequence': -100,
+    'application' : True,
+    'installable': True,
+    'auto_install': False,
+    'assets': {},
+    'license': 'LGPL-3',
+}

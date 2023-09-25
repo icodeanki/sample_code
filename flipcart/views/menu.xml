@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_flipcart_users_tree" model="ir.ui.view">
+        <field name="name">flipcart.users.tree</field>
+        <field name="model">flipcart.users</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="user_id"/>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="contact"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_flipcart_users_form" model="ir.ui.view">
+        <field name="name">flipcart.users.form</field>
+        <field name="model">flipcart.users</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                    <group>
+                        <field name="user_id"/>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="gender"/>
+                        <field name="contact"/>
+                        <field name="active"/>
+                    </group>
+
+                </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="view_flipcart_users_search" model="ir.ui.view">
+        <field name="name">flipcart.users.search</field>
+        <field name="model">flipcart.users</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="user_id"/>
+                <field name="name"/>
+                <filter name="filter_male" string="Male" domain="[('gender','=','male')]"/>
+                <filter name="filter_female" string="Female" domain="[('gender','=','female')]"/>
+                <filter name="filter_archived" string="Archived" domain="[('active','=',False)]"/>
+                <group>
+                    <filter name="groupby_gender" string="Gender" context="{'group_by':'gender'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_flipcart" model="ir.actions.act_window">
+        <field name="name">Users</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">flipcart.users</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>
+                Create a Users..!!!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id = "menu_flipcart"
+              name = 'flipcart'
+              web_icon = "flipcart,static/description/f1.png"
+              sequence = "10"/>
+    <menuitem id = "menu_flipcart_users"
+              name = 'Users'
+              parent = "menu_flipcart"
+              sequence = "0"/>
+    <menuitem id = "menu_flipcart_users_details"
+              name = 'Users Details'
+              parent = "menu_flipcart_users"
+              action = "action_flipcart"
+              sequence = "1"/>
+
+    <menuitem id = "menu_flipcart_product_details"
+              name = 'Product Details'
+              parent = "menu_flipcart_users"
+              action = "sale.product_template_action"
+              sequence = "3"/>
+</odoo>
