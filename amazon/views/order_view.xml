@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_amazon_order_tree" model="ir.ui.view">
+        <field name="name">amazon.order.tree</field>
+        <field name="model">amazon.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="product_id"/>
+                <field name="customer_id"/>
+                <field name="order_time"/>
+                <field name="order_date"/>
+                <field name="age"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_amazon_order_form" model="ir.ui.view">
+        <field name="name">amazon.order.form</field>
+        <field name="model">amazon.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="product_id"/>
+                            <field name="customer_id"/>
+                            <field name="order_time"/>
+                        </group>
+                        <group>
+                            <field name="order_date"/>
+                            <field name="age"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="amazon_records" string="Amazon">
+                            <field name="amazon_ids">
+                                <tree editable="top">
+                                    <field name="name"/>
+                                    <field name="age"/>
+                                    <button name="set_age" type="object" string="click" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_amazon_order_search" model="ir.ui.view">
+        <field name="name">amazon.order.search</field>
+        <field name="model">amazon.order</field>
+        <field name="arch" type="xml">
+            <search>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_amazon_order" model="ir.actions.act_window">
+        <field name="name">Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">amazon.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="">
+                CREATE A CUSTOMERS ORDER....!!!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_order"
+              name="Order"
+              parent="menu_amazon"
+              sequence="5"/>
+
+    <menuitem id="menu_order_details"
+              name="orders"
+              action="action_amazon_order"
+              parent="menu_order"
+              sequence="5"/>
+
+
+</odoo>

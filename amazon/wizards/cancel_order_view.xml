@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_amazon_cancel_order_wizards_form" model="ir.ui.view">
+        <field name="name">Amazon Cancel Order Wizards Form</field>
+        <field name="model">cancel.order.wizards</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="customer_ids" />
+<!--                    <field name="customers_ids" />-->
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_amazon_cancel_order" model="ir.actions.act_window">
+        <field name="name">Cancel Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cancel.order.wizards</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_cancel_order"
+              name="cancel orders"
+              action="action_amazon_cancel_order"
+              parent="menu_order"
+              sequence="10"/>
+
+</odoo>

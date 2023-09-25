@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="invoice_report">
+        <t t-call="web.html_container">
+            <t t-call="amazon.report_invoice">
+                <div class="page">
+                    <t t-foreach="docs" t-as="doc">
+                        <style>td{padding:3px;}</style>
+                        <table style="width:100%;border:1px solid black">
+                            <tr rowspan="5">
+                                <td style="width:50%;border-left:1px solid black;;vertical-align:top">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:20%;vertical-align:top;">
+                                                <b>Exporter :</b>
+                                            </td>
+                                            <td style="width:80%;vertical-align:top;">
+                                                <t t-esc="doc.company_id.name"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;vertical-align:top;"></td>
+                                            <td style="width:80%;vertical-align:top;">
+                                                <t t-esc="doc.company_id.street"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;vertical-align:top;"></td>
+                                            <td style="width:80%;vertical-align:top;">
+                                                <t t-esc="doc.company_id.street2"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;vertical-align:top;"></td>
+                                            <td style="width:80%;vertical-align:top;">
+                                                <t t-esc="doc.company_id.city"/>
+                                                <![CDATA[ &nbsp; ]]>
+                                                <t t-esc="doc.company_id.state_id.name"/>
+                                                <![CDATA[ &nbsp; ]]>
+                                                <t t-esc="doc.company_id.country_id.name"/>
+                                                <![CDATA[ &nbsp; ]]>
+                                                <t t-esc="doc.company_id.zip"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;vertical-align:top;"></td>
+                                            <td style="width:80%;vertical-align:top;">
+                                                Email :
+                                                <t t-esc="doc.company_id.email"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;vertical-align:top;"></td>
+                                            <td style="width:80%;vertical-align:top;">
+                                                GST NO.
+                                                <t t-esc="doc.company_id.vat"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="width:50%;border-left:1px solid black;vertical-align:top">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td colspan="2"
+                                                style="width:22%;border-bottom:1px solid black;border-right:1px solid black">
+                                                <b>Invoice No. Date</b>
+                                            </td>
+                                            <td colspan="2"
+                                                style="width:20%;border-right:1px solid black;border-bottom:1px solid black;">
+                                                <t t-esc="doc.invoice_date"/>
+                                            </td>
+                                            <td style="width:20%;border-bottom:1px solid black;">
+                                                <b>Exporters IEC</b>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;border-bottom:1px solid black;border-right:1px solid black"/>
+                                            <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;"/>
+                                            <td colspan="2"
+                                                style="width:20%;border-right:1px solid black;border-bottom:1px solid black;"/>
+                                            <td style="width:20%;border-bottom:1px solid black;">
+                                                <b>AAHCV3380J</b>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;border-bottom:1px solid black;border-right:1px solid black"/>
+                                            <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;"/>
+                                            <td style="width:20%;border-right:1px solid black"/>
+                                            <td style="width:20%;border-bottom:1px solid black;border-right:1px solid black">
+                                                <b>Shipping Line:</b>
+                                            </td>
+                                            <td style="width:20%;border-bottom:1px solid black;"/>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"
+                                                style="width:20%;border-bottom:1px solid black;border-right:1px solid black">
+                                                <b>Buyers Order No.</b>
+                                            </td>
+                                            <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;"/>
+                                            <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;">
+                                                <b>Forwarder:</b>
+                                            </td>
+                                            <td style="width:20%;border-bottom:1px solid black;"/>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;"/>
+                                            <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;"/>
+                                            <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;"/>
+                                            <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;">
+                                                <b>Other Ref.</b>
+                                            </td>
+                                            <td style="width:20%;border-bottom:1px solid black;"/>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;">
+                                                <br/>
+                                            </td>
+                                            <td style="width:20%;">
+                                                <br/>
+                                            </td>
+                                            <td style="width:20%;">
+                                                <br/>
+                                            </td>
+                                            <td style="width:20%;">
+                                                <br/>
+                                            </td>
+                                            <td style="width:20%;">
+                                                <br/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width:100%;border:1px solid black">
+                            <tr rowspan="5">
+                                <td style="width:50%;border-left:1px solid black;;vertical-align:top">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:20%;vertical-align:top;">
+                                                <b>Consignee :-</b>
+                                            </td>
+                                            <td style="width:80%;vertical-align:top;">
+                                                <t t-esc="doc.company_id.name"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;vertical-align:top;"></td>
+                                            <td style="width:80%;vertical-align:top;">
+                                                <t t-esc="doc.company_id.street"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;vertical-align:top;"></td>
+                                            <td style="width:80%;vertical-align:top;">
+                                                <t t-esc="doc.company_id.street2"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;vertical-align:top;"></td>
+                                            <td style="width:80%;vertical-align:top;">
+                                                <t t-esc="doc.company_id.city"/>
+                                                <![CDATA[ &nbsp; ]]>
+                                                <t t-esc="doc.company_id.state_id.name"/>
+                                                <![CDATA[ &nbsp; ]]>
+                                                <t t-esc="doc.company_id.country_id.name"/>
+                                                <![CDATA[ &nbsp; ]]>
+                                                <t t-esc="doc.company_id.zip"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;vertical-align:top;"></td>
+                                            <td style="width:80%;vertical-align:top;">
+                                                Email :
+                                                <t t-esc="doc.company_id.email"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;vertical-align:top;"></td>
+                                            <td style="width:80%;vertical-align:top;">
+                                                GST NO.
+                                                <t t-esc="doc.company_id.vat"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="width:50%;border-left:1px solid black;vertical-align:top;">
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;">
+                                                <b>Country of Origin of Goods :</b>
+                                            </td>
+                                            <td style="width:20%;border-bottom:1px solid black;text-align:left;">Pune,
+                                                Maharashtra (India)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;">
+                                                <b>Port of Load :</b>
+                                            </td>
+                                            <td style="width:20%;border-bottom:1px solid black;text-align:left;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;">
+                                                <b>Country of Final Destination :</b>
+                                            </td>
+                                            <td style="width:20%;border-bottom:1px solid black;text-align:left;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;">
+                                                <b>Port of Discharge :</b>
+                                            </td>
+                                            <td style="width:20%;border-bottom:1px solid black;text-align:left;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;">
+                                                <b>Final Destination :</b>
+                                            </td>
+                                            <td style="width:20%;border-bottom:1px solid black;text-align:left;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:20%;border-right:1px solid black;text-align:right;">
+                                                <b>Incoterms :</b>
+                                            </td>
+                                            <td style="width:20%;text-align:left;">
+                                                <t t-esc="doc.invoice_incoterm_id.name"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width:100%;border-left:1px solid black;border-right:1px solid black;border-top:1px solid black">
+                            <tr>
+                                <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;">
+                                    <b>Marks Nos :</b>
+                                </td>
+                                <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;"/>
+                                <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;">
+                                    <b>Pre Carriage by :</b>
+                                </td>
+                                <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;"/>
+                            </tr>
+                            <tr>
+                                <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;">
+                                    <b>Nos. and Kind of Packages :</b>
+                                </td>
+                                <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;"/>
+                                <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;">
+                                    <b>Total Net Weight Kg :</b>
+                                </td>
+                                <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;"/>
+                            </tr>
+                            <tr>
+                                <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;">
+                                    <b>Description of Goods :</b>
+                                </td>
+                                <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;"/>
+                                <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;">
+                                    <b>Total Gross Weight Kg :</b>
+                                </td>
+                                <td style="width:20%;border-right:1px solid black;border-bottom:1px solid black;text-align:right;"/>
+                            </tr>
+                        </table>
+                        <table style="width:100%">
+                            <!--                             This is for table headers -->
+                            <tr>
+                                <td style="width:6%;text-align:center;border-right:1px solid black;border-left:1px solid black;padding:5px;">
+                                    <b>Line No</b>
+                                </td>
+                                <td style="width:10%;text-align:center;border-right:1px solid black;padding:5px;">
+                                    <b>Part number</b>
+                                </td>
+                                <td style="width:20%;text-align:center;border-right:1px solid black;padding:5px;">
+                                    <b>Description of goods</b>
+                                </td>
+                                <td style="width:18%;text-align:center;border-right:1px solid black;padding:5px;">
+                                    <b>Nos. of Packages</b>
+                                </td>
+                                <td style="width:10%;text-align:center;border-right:1px solid black;padding:5px;">
+                                    <b>HSN Code</b>
+                                </td>
+                                <td style="width:12%;text-align:center;border-right:1px solid black;padding:5px;">
+                                    <b>Total Qty (Pieces)</b>
+                                </td>
+                                <td style="width:10%;text-align:center;border-right:1px solid black;padding:5px;">
+                                    <b>Rate in Euro</b>
+                                </td>
+                                <td style="width:13%;text-align:center;border-right:1px solid black;padding:5px;">
+                                    <b>Amount In Euro</b>
+                                </td>
+                            </tr>
+                            <!--                             This is for table data                               -->
+<!--                            <t t-set="line_no" t-value="1"/>-->
+<!--                            <t t-foreach="doc.invoice_line_ids" t-as="part">-->
+<!--                                <tr>-->
+<!--                                    <td style="border:1px solid black;">-->
+<!--                                        <p style="text-align:center;">-->
+<!--                                            <t t-esc="line_no"/>-->
+<!--                                            <t t-set="line_no" t-value="line_no + 1"/>-->
+<!--                                        </p>-->
+<!--                                    </td>-->
+<!--                                    <td style="border:1px solid black;">-->
+<!--                                        <p style="text-align: center;">-->
+<!--                                            <br/>-->
+<!--                                        </p>-->
+<!--                                    </td>-->
+<!--                                    <td style="border:1px solid black;">-->
+<!--                                        <p style="text-align: center;">-->
+<!--                                            <t t-esc="part.name"/>-->
+<!--                                        </p>-->
+<!--                                    </td>-->
+<!--                                    <td style="border:1px solid black;">-->
+<!--                                        <p style="text-align: center;">-->
+<!--                                            <br/>-->
+<!--                                        </p>-->
+<!--                                    </td>-->
+<!--                                    <td style="border:1px solid black;">-->
+<!--                                        <p style="text-align: center;">-->
+<!--                                            <br/>-->
+<!--                                        </p>-->
+<!--                                    </td>-->
+<!--                                    <td style="border:1px solid black;">-->
+<!--                                        <p style="text-align: center;">-->
+<!--                                            <t t-esc="part.quantity"/>-->
+<!--                                        </p>-->
+<!--                                    </td>-->
+<!--                                    <td style="border:1px solid black;">-->
+<!--                                        <p style="text-align: center;">-->
+<!--                                            <t t-esc="part.price_unit"/>-->
+<!--                                        </p>-->
+<!--                                    </td>-->
+<!--                                    <td style="border:1px solid black;">-->
+<!--                                        <p style="text-align: center;">-->
+<!--                                            <t t-esc="part.price_subtotal"/>-->
+<!--                                        </p>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                            </t>-->
+                            <tr>
+                                <td colspan="2" style="border-left:1px solid black;">
+                                    <p>
+                                        <br/>
+                                    </p>
+                                </td>
+                                <td style="border:1px solid black;text-align:center;">
+                                    <b>Total :</b>
+                                </td>
+                                <td style="border:1px solid black;">
+                                    <br/>
+                                </td>
+                                <td style="border:1px solid black;">
+                                    <p>
+                                        <br/>
+                                    </p>
+                                </td>
+                                <td style="border:1px solid black;">
+                                    <p>
+                                        <br/>
+                                    </p>
+                                </td>
+                                <td style="border:1px solid black;text-align:center;">
+                                    <b>Total Euro :</b>
+                                </td>
+                                <td style="border:1px solid black;">
+                                    <p>
+                                        <br/>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-left:1px solid black;" colspan="6">
+                                    <p>
+                                        <br/>
+                                    </p>
+                                </td>
+                                <td style="border:1px solid black;text-align:center">
+                                    <b>Total INR :</b>
+                                </td>
+                                <td style="border:1px solid black;text-align:center">
+                                    <p>
+                                        <br/>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-left:1px solid black;border-right:1px solid black" colspan="8">
+                                    <p style="text-align: left;">
+                                        <br/>
+                                    </p>
+                                    <p style="text-align: left;">
+                                        <b>Amount in Words:</b>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:560pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                                    colspan="8">
+                                    <p style="text-indent: 0pt;text-align: left;">
+                                        <br/>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width:100%;border:1px solid black;">
+                            <tr>
+                                <td>
+                                    <br/>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td style="width:55%;">
+                                    <b>Payment terms :</b>
+                                    30 Day
+                                </td>
+                                <td style="45%">
+                                    <b>For Visotec Corporate Identity Solutions Private Limited</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:55%;">
+                                    <b>Account Holder :</b>
+                                    Visotec Corporate Identity Solutions Private Limited
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td style="width:55%;">
+                                    <b>Name of Bank :</b>
+                                    Credit Agricole Corporate and Investment Bank
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td style="width:55%;">
+                                    <b>Bank Account Number :</b>
+                                    06007618100000
+                                    <b>IFSC :</b>
+                                    CRLY0000005
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>NOTE: Against Import / Export Code No. AAHCV3380J Dated : 19/01/2021</b>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>ECC Number:</b>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>GST No. 27AAHCV3380J1ZY</b>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Declaration :-</b>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Goods described and the all particulars are true and correct.</b>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>WE INTEND TO CLAIM REWARDS UNDER REMISSION OF DUTIES AND TAXES ON EXPORTED
+                                        PRODUCTS (RoDTEP)
+                                    </b>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Declaration :-RD001</b>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td/>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td style="font-size:17pt">
+                                    <b>This Shipment is under Drawback (DBK)</b>
+                                </td>
+                                <td class="text-center">
+                                    <b>Authorised Signatory.</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                </td>
+                                <td/>
+                            </tr>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+    <template id="external_layout_standard_account_invoice">
+        <!--          this is for header part   -->
+        <div t-attf-class="header o_company_#{company.id}_layout">
+            <div class="row">
+                <div class="col-md-12" style="position:relative; ">
+                    <table style="width:100%;border:1px solid black">
+                        <tr>
+                            <td style="width:50%;vertical-align:top;text-align:center">
+                                <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)"
+                                     style="height: 50px; width: 100px;" alt="Logo"/>
+                            </td>
+                            <td style="width:50%;text-align:center;font-weight:bold;font-size:40pt">INVOICE</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="o_boxed_header"/>
+        </div>
+        <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"
+             t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+             t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <div class="o_boxed_header"/>
+            <t t-raw="0"/>
+        </div>
+        <!--          this is for footer part  -->
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+            <div class="text-center" style="border-top: 1px solid black;">
+                <div class="row" style="padding-bottom:20px">
+                    <div class="row text-center" style="padding-bottom:20px">
+                        <div class="col-md-12"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="report_invoice">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+        <t t-if="not company">
+            <!--    Multicompany    -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+        <t t-call="amazon.external_layout_standard_account_invoice">
+            <t t-raw="0"/>
+        </t>
+    </template>
+</odoo>
+
+
+
+

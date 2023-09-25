@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="customer_menu" model="website.menu">
+        <field name="name">Customer</field>
+        <field name="parent_id" search="[('parent_id','=',False),('website_id','=',1)]"/>
+        <field name="website_id" ref="website.default_website"/>
+    </record>
+    <record id="customer_menu_form" model="website.menu">
+        <field name="name">Customer Registration</field>
+        <field name="url">/customer-registration</field>
+        <field name="parent_id" ref="amazon.customer_menu"/>
+        <field name="website_id" ref="website.default_website"/>
+        <field name="sequence">11</field>
+    </record>
+    <record id="customer_menu_list" model="website.menu">
+        <field name="name">Customer list view</field>
+        <field name="url">/customer-registration/all</field>
+        <field name="parent_id" ref="amazon.customer_menu"/>
+        <field name="website_id" ref="website.default_website"/>
+        <field name="sequence">15</field>
+    </record>
+
+    <!--     This template used for registration from the Website -->
+    <template id="customer_registration_form" name="customer registration form">
+        <t t-call="website.layout">
+            <style>
+                .div-form{width:50%;margin:5% 25%;border:1px solid black;box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);}
+                .form-row{display: flex;align-items: center;text-align:center;}
+                .form-col{padding:10px 10px;margin-left:4%;}
+                .btn{width:30%;padding:8px 8px;background-color:#3a9e9c;margin-bottom:2%;}
+                .btn:hover{background-color:#51c4c2;border:1px solid #1a5756;}
+                <!--                button{margin-left:9%;height:30px;width:10%;}-->
+                <!--                input{width:10%;height:10%;margin-left:10px;}-->
+            </style>
+
+            <div class="card">
+                <form action="/customer-registration/submit" method="POST">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+
+                    <div class="div-form p-2">
+                        <h3 style="margin-top:2%;margin-bottom:4%;">
+                            <center>Customer Registration</center>
+                        </h3>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Customer name
+                                    <span>*</span>
+                                </label>
+                                <br/>
+                                <input type="text" id="name" name="name" t-att-value="name" class="form-control"/>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Email
+                                    <span>*</span>
+                                </label>
+                                <br/>
+                                <input type="text" id="email" name="email" t-att-value="email" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Mobile
+                                    <span>*</span>
+                                </label>
+                                <br/>
+                                <input type="text" id="contact" name="mobile" t-att-value="mobile" class="form-control"/>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>State
+                                    <span>*</span>
+                                </label>
+                                <br/>
+                                <!--                                            <input type="text" id="state" name="state_id"/>-->
+                                <select id="state_id" name="state_id" class="form-control">
+                                    <t t-foreach="state_id" t-as="state">
+                                        <option t-att-value="state.id">
+                                            <t t-esc="state.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label for="gst">GST Treatment
+                                    <span>*</span>
+                                </label>
+                                <br/>
+                                <select style="font-size:16px;" id="gst" name="l10n_in_gst_treatment" class="form-control">
+                                    <option value="regular">Registered Business-Regular</option>
+                                    <option value="composition">Registered Business-Composition</option>
+                                    <option value="unregistered">Unregistered Business</option>
+                                    <option value="consumer">Consumer</option>
+                                    <option value="overseas">Overseas</option>
+                                    <option value="special_economic_zone">Special Economic Zone</option>
+                                    <option value="deemed_export">Deemed Export</option>
+                                    <option value="uin_holders">UIN Holders</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="vat">GSTIN
+                                    <span>*</span>
+                                </label>
+                                <br/>
+                                <input type="text" id="vat" name="vat" t-att-value="vat" class="form-control"/>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="width:87%;margin-left:36px;align-items: center;text-align:center;">
+                                <label style="margin-top:2%;">Address
+                                    <span>*</span>
+                                </label>
+                                <br/>
+                                <textarea style="padding:10px 10px;width:100%;" type="text" id="address"
+                                          name="street" t-att-value="street"/>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <label>City
+                                <span>*</span>
+                            </label>
+                            <br/>
+                            <input type="text" id="city" name="city" t-att-value="city"/>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <label>Country
+                                    <span>*</span>
+                                </label>
+                                <br/>
+                                <select id="country_id" name="country_id">
+                                    <t t-foreach="country_id" t-as="country">
+                                        <option t-att-value="country.id">
+                                            <t t-esc="country.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                            <div class="form-col">
+                                <label>Zip Code
+                                    <span>*</span>
+                                </label>
+                                <br/>
+                                <input type="text" name="zip" t-att-value="zip"/>
+                            </div>
+                        </div>
+                        <div style="align-items: center;text-align:center;margin-top:3%;">
+                            <button class="btn" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <template id="submit_registration" name="Registration Submit">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <h5 class="text-center" style="margin:100px 300px;">
+                        <span>You registered
+                            <b>successfully</b>
+                        </span>
+                    </h5>
+                    <p>We will get back to you shortly.</p>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

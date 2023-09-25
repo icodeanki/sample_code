@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--  This is for body of reports  -->
+    <template id="export_purchase_order_report">
+        <t t-call="web.html_container">
+            <t t-call="amazon.report_purchase_order">
+                <div class="page">
+                    <t t-foreach="docs" t-as="doc">
+                        <!--                        table 1-->
+                        <table style="width:100%;border:1px solid black;font-size:14px">
+                            <tr>
+                                <td style="width:40%;padding:5px;">
+                                    <b>Vendor Name: <span t-field="doc.partner_id"></span> </b>
+                                </td>
+                                <td style="width:60%;padding:5px;">
+                                    <b>Purchase Order No : XMT/PUR/22-23/RM/1639</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:40%;padding:5px;">
+                                    <b>Vendor Code :</b>
+                                </td>
+                                <td style="width:60%;padding:5px;">
+                                    <b>Date: 14.01.2023</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:40%;padding:5px;">
+                                    <span>Pandurang Wadi, Golvali, Kalyan Shill Road,</span>
+                                </td>
+                                <td style="width:60%;padding:5px;">
+                                    <b>Ship To / Bill To :</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:40%;padding:5px;">
+                                    <span>Opp. Zenith Rubber, Next to Precission mechanical,Dombivli (E) 421203</span>
+                                </td>
+                                <td style="width:60%;padding:5px;">
+                                    <span>Xcellance Medical Technologies Pvt Ltd.,</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:40%;padding:5px;">
+                                    <b>Contact Person : Arvind,</b>
+                                </td>
+                                <td style="width:60%;padding:5px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:40%;padding:5px;">
+                                    <span>Contact No : 9323616889</span>
+                                </td>
+                                <td style="width:60%;padding:5px;">
+                                    <span>Navi Mumbai  - 400 701 India.</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:40%;padding:5px;">
+                                    <span>GSTIN : 27AALPU0513F1ZS</span>
+                                </td>
+                                <td style="width:60%;padding:5px;">
+                                    <span>Tel : +91-22-71142440, </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:40%;padding:5px;">
+                                    <span>Email ID: sudarshansales0104@gmail.com</span>
+                                </td>
+                                <td style="width:60%;padding:5px;">
+                                    <span>Email : purchase@shalya.in</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="width:100%;padding:5px;">
+                                    <b>Remarks :-</b><span>Against Exception No.     OP/03390          Dt.13.01.2023 </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="width:100%;padding:5px;">
+                                    <span>Dear Sir,<br/>Please supply the under mentioned material/goods at our factory. Kindly write our purchase order number on your challans and bills for processing of your bills (Validilty of PO is 1 Month)</span>
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width:100%;border:1px solid black;font-size:13px;vertical-align: middle;">
+                            <tr>
+                                <td style="width:5%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+                                    <b>Sr. No.</b>
+                                </td>
+                                <td style="width:15%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+                                    <b>PRODUCT NAME</b>
+                                </td>
+                                <td style="width:35%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+                                    <b>DESCRIPTION</b>
+                                </td>
+                                <td style="width:10%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+                                    <b>Vendor Part No.</b>
+                                </td>
+                                <td style="width:8%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+                                    <b>Internal Ref</b>
+                                </td>
+                                <td style="width:6%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+                                    <b>QTY</b>
+                                </td>
+                                <td style="width:7%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+                                    <b>UNIT</b>
+                                </td>
+                                <td style="width:7%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+                                    <b>RATE IN RS</b>
+                                </td>
+                                <td style="width:7%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+                                    <b>TOTAL</b>
+                                </td>
+                            </tr>
+                            <t t-set="sr_no" t-value="1"/>
+                            <t t-foreach="doc.order_line" t-as="rec">
+                            <tr>
+                                <td style="width:5%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+                                    <t t-esc="sr_no"/>
+                                    <t t-set="sr_no" t-value="sr_no +1 "/>
+                                </td>
+                                <td style="width:15%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+                                     <t t-esc="rec.product_id"/>
+                                </td>
+                                <td style="width:35%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+                                    <t t-esc="rec.name"/>
+                                </td>
+                                <td style="width:10%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+
+                                </td>
+                                <td style="width:8%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+
+                                </td>
+                                <td style="width:6%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+                                    <t t-esc="rec.product_qty"/>
+                                </td>
+                                <td style="width:7%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+                                    <t t-esc="rec.price_unit"/>
+                                </td>
+                                <td style="width:7%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+                                    <t t-esc="rec.taxes_id.name"/>
+                                </td>
+                                <td style="width:7%;padding:2px;height:35px;text-align:center;vertical-align: middle;">
+
+                                </td>
+                            </tr>
+                            </t>
+
+                            <tr>
+                                <td colspan="8" style="padding:5px;text-align:right;text-align:right;vertical-align: middle;">
+                                    <b>TOTAL</b>
+                                </td>
+                                <td style="width:6%;padding:5px;">
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width:100%;border:1px solid black;">
+                            <tr>
+                                <td style="width:70%;padding:5px;font-size:14px;vertical-align: middle;height:15px;">
+                                    <b>Terms &amp; Conditions :</b>
+                                </td>
+                                <td style="width:18%;padding:5px;font-size:14px;vertical-align: middle;height:15px;">
+                                    <span>Frieght &amp; forwarding</span>
+                                </td>
+                                <td style="width:12%;padding:5px;font-size:14px;height:15px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:70%;padding:5px;font-size:13px;height:15px;">
+                                    <span>1) Validity of PO is 1 month</span>
+                                </td>
+                                <td style="width:18%;padding:5px;font-size:14px;height:15px;">
+                                    <span>Taxable Value</span>
+                                </td>
+                                <td style="width:12%;padding:5px;font-size:14px;height:15px;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:70%;padding:5px;font-size:13px;height:15px;">
+                                    <span>2) Material / Goods must be supplied / dispatched within time.</span>
+                                </td>
+                                <td style="width:18%;padding:5px;font-size:14px;height:15px;">
+                                    <span>CGST @9%</span>
+                                </td>
+                                <td style="width:12%;padding:5px;font-size:14px;height:15px;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:70%;padding:5px;font-size:13px;height:15px;">
+                                    <span>3) In case of any type of rejection , you are responsible for collection of rejected material after</span>
+                                </td>
+                                <td style="width:18%;padding:5px;font-size:14px;height:15px;">
+                                    <span>SGST @9%</span>
+                                </td>
+                                <td style="width:12%;padding:5px;font-size:14px;height:15px;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:70%;padding:5px;font-size:13px;height:15px;">
+                                    <span>informed by us  within 10 Days.</span>
+                                </td>
+                                <td style="width:18%;padding:5px;font-size:14px;height:15px;">
+                                    <span>IGST @</span>
+                                </td>
+                                <td style="width:12%;padding:5px;font-size:14px;height:15px;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:70%;padding:5px;font-size:13px;height:15px;">
+                                    <span>4) Supplier must notify XcelLance about of any changes that affect the ability of the purchased</span>
+                                </td>
+                                <td style="width:18%;padding:5px;font-size:14px;height:15px;">
+                                    <b>TOTAL AMOUNT</b>
+                                </td>
+                                <td style="width:12%;padding:5px;font-size:14px;height:15px;">
+                                    <b></b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="width:100%;padding:5px;font-size:13px;height:15px;">
+                                    <span>product to meet specified purchased requirement prior to implementation</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="width:100%;padding:5px;font-size:13px;height:15px;">
+                                    <span>5) Invoice Should consist of following :</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="width:100%;padding:5px;font-size:13px;height:15px;">
+                                    <span>a) GSTN Number buyer as well as supplier</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="width:100%;padding:5px;font-size:13px;height:15px;">
+                                    <span>b) Lot code, serial number range or date code</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="width:100%;padding:5px;font-size:13px;height:15px;">
+                                    <span>c) Manufacturer Part Number / Revision #</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="width:100%;padding:5px;font-size:13px;height:15px;">
+                                    <span>d) Required CE marked product &amp; CE Certificate:
+                                        <label>
+                                            <input type="checkbox" name="yes" value="yes"/>YES</label>
+                                        <label>
+                                            <input type="checkbox" name="no" value="no"/>NO</label>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="width:100%;padding:5px;font-size:13px;height:15px;">
+                                    <span>e) Required COC/ COA/ Batch Certificate:
+                                        <label>
+                                            <input type="checkbox" name="yes" value="yes"/>YES</label>
+                                        <label>
+                                            <input type="checkbox" name="no" value="no"/>NO</label>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="width:100%;padding:5px;font-size:13px;height:15px;">
+                                    <span>6) We reserve the right to amend or cancel this order and delivery schedule without assigning any reason and incurring any liability on us.</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="width:100%;padding:5px;font-size:13px;height:15px;">
+                                    <span>7) Payment : Against Delivery </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="width:100%;padding:5px;font-size:13px;height:15px;">
+                                    <span>8) Delivery : 1-2 Week.</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="external_layout_standard_purchase_order_invoice">
+        <!--          this is for header part   -->
+        <div t-attf-class="header o_company_#{company.id}_layout">
+            <div class="row">
+                <div class="col-md-12" style="position:relative; ">
+                    <table style="width:100%;padding:5px;font-size:13px;">
+                        <tr>
+                            <td rowspan="3" style="width:10%;">
+                            </td>
+                            <td style="width:90%;padding:5px;font-size:13px;text-align:center;">
+                                <b>Xcellance Medical Technologies Pvt. Ltd.,</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:90%;padding:5px;font-size:13px;text-align:center;">
+                                <b>Shalya Avenue, W-239, Rabale MIDC, Navi Mumbai  - 400 701, India.</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:90%;padding:5px;font-size:13px;text-align:center;">
+                                <b>Tel : +91-22-71142400, E-mail : info@shalya.in,  Website: www.shalya.in</b>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="width:100%;padding:5px;font-size:13px;">
+                         <tr>
+                            <td style="width:25%;padding:5px;font-size:13px;">
+                                <b>GSTIN : 27AALPU0513F1ZS</b>
+                            </td>
+                            <td style="width:25%;padding:5px;font-size:13px;">
+                                <b>PAN : AAE345656</b>
+                            </td>
+                            <td colspan="2" style="width:30%;padding:5px;font-size:13px;">
+                                <b>CIN : 587462314758621</b>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="o_boxed_header"/>
+        </div>
+        <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"
+             t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+             t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <div class="o_boxed_header"/>
+            <t t-raw="0"/>
+        </div>
+        <!--          this is for footer part  -->
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+            <div style="border-top: 1px solid black;">
+                <div>
+                    <div>
+                        <div/>
+                        <table style="width:100%;padding:5px;font-size:13px;">
+                         <tr>
+                            <td rowspan="2" style="width:20%;padding:5px;font-size:13px;height:30px;">
+                            </td>
+                            <td rowspan="2" style="width:20%;padding:5px;font-size:13px;height:30px;">
+                            </td>
+                            <td rowspan="3" style="width:26%;padding:5px;font-size:13px;height:30px;">
+                            </td>
+                             <td style="width:34%;padding:5px;font-size:13px;height:15px;">
+                                <b>For Xcellance Medical Technologies Pvt. Ltd.</b>
+                            </td>
+                        </tr>
+                            <tr>
+                             <td style="width:24%;padding:5px;font-size:13px;height:40px;">
+                            </td>
+                        </tr>
+                            <tr>
+                            <td style="width:20%;padding:5px;font-size:13px;">
+                                <span>Prepared By :</span>
+                            </td>
+                            <td style="width:20%;padding:5px;font-size:13px;">
+                                <span>Checked By:</span>
+                            </td>
+                             <td colspan="2" style="width:34%;padding:5px;font-size:13px;">
+                                <b>Authorised By :</b>
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="report_purchase_order">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+        <t t-if="not company">
+            <!--    Multicompany    -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+        <t t-call="amazon.external_layout_standard_purchase_order_invoice">
+            <t t-raw="0"/>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="flipcart_users_inherit_form" model="ir.ui.view">
+        <field name="name">Flipcart Users Inherit</field>
+        <field name="model">flipcart.users</field>
+        <field name="inherit_id" ref="flipcart.view_flipcart_femaleusers_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="email"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

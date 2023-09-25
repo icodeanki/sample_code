@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    <template id="amazon_customer_report">-->
+    <!--        <t t-call="web.html_container">-->
+    <!--            <t t-foreach="docs" t-as="doc">-->
+    <!--                <h2>Customer</h2>-->
+    <!--            </t>-->
+    <!--        </t>-->
+    <!--    </template>-->
+
+    <template id="order_report">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="web.external_layout">
+                <t t-call="web.html_container">
+                    <div class="page">
+                        <h1 style="text-align:center">Order Report</h1>
+                        <div style="margin-top: 50px;">
+                            <strong>Product Name:</strong>
+                            <span t-field="doc.product_id"/>
+                        </div>
+                        <div>
+                            <strong>Customer Name:</strong>
+                            <span t-field="doc.customer_id"/>
+                        </div>
+                        <div>
+                            <strong>Order Date:</strong>
+                            <span t-field="doc.order_date"/>
+                        </div>
+                        <div>
+                            <strong>Order Time:</strong>
+                            <span t-field="doc.order_time"/>
+                        </div>
+                        <div style="margin-top: 50px;">
+                            <table class="table">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                </tr>
+                                <tr t-foreach="doc.amazon_ids" t-as="rec">
+                                    <tr>
+                                        <td>
+                                            <span t-esc="rec.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="rec.age"/>
+                                        </td>
+                                    </tr>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="customer_list_view_menu" name="customers list view menu">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <h3><center style="margin-top:3%;">Customers List</center></h3>
+                <div>
+                    <table style="width:95%;margin:3%;font-size: 14px;">
+                        <thead>
+                            <tr style="font-size: 15px;align-items: center;text-align:center;">
+                                <th style="border:1px solid black;">Sr No.</th>
+                                <th style="border:1px solid black;">Customer Name</th>
+                                <th style="border:1px solid black;">Email</th>
+                                <th style="border:1px solid black;">Mobile</th>
+                                <th style="border:1px solid black;">GST Treatment</th>
+                                <th style="border:1px solid black;">GSTIN</th>
+                                <th style="border:1px solid black;">Address</th>
+                                <th style="border:1px solid black;">City</th>
+                                <th style="border:1px solid black;">state</th>
+<!--                                <th style="border:1px solid black;">Country</th>-->
+                            </tr>
+                        </thead>
+                        <t t-set="sr_no" t-value="1"/>
+                        <t t-foreach="cust_ids" t-as="rec">
+                            <tbody>
+                                <tr>
+                                     <td style="padding:5px 15px;">
+                                         <t t-esc="sr_no"/>
+                                         <t t-set="sr_no" t-value="sr_no +1 "/>
+                                    </td>
+                                    <td style="padding:5px 15px;">
+                                        <a t-attf-href="/customer/#{rec.id}"><span t-field="rec.name"/>
+                                        </a>
+                                    </td>
+                                    <td style="padding:5px 15px;">
+                                        <span t-field="rec.email"/>
+                                    </td>
+                                    <td style="padding:5px 15px;">
+                                        <span t-field="rec.mobile"/>
+                                    </td>
+                                    <td style="padding:5px 15px;">
+                                        <span t-field="rec.l10n_in_gst_treatment"/>
+                                    </td>
+                                    <td style="padding:5px 15px;">
+                                        <span t-field="rec.vat"/>
+                                    </td>
+                                    <td style="padding:5px 15px;">
+                                        <span t-field="rec.street"/>
+                                    </td>
+                                    <td style="padding:5px 15px;">
+                                        <span t-field="rec.city"/>
+                                    </td>
+                                    <td style="padding:5px 15px;">
+                                        <span t-field="rec.state_id.name"/>
+                                    </td>
+<!--                                    <td style="padding:5px 15px;">-->
+<!--                                        <span t-field="rec.country_id.name"/>-->
+<!--                                    </td>-->
+                                </tr>
+                            </tbody>
+                        </t>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

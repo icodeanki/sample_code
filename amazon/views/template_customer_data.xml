@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="tmp_customer_data_page" name="Customer Details">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <div class="container"><br />
+                    <center>
+                        <h3>Customer Order Details</h3>
+                    </center><br/>
+                    <table class="table-striped table" style="width:70%;border:1px solid black;">
+                        <thead style="font-size: 20px;">
+                            <tr>
+                                <h6><b>
+                                        <th>Product Name</th>
+                                        <th>Customer Name</th>
+                                        <th>Order Date</th>
+                                        <th>Order Time</th>
+                                    </b></h6>
+                            </tr>
+                        </thead>
+                        <tbody style="font-size: 15px;border:1px solid black;">
+                            <t t-foreach="records" t-as="order">
+                                <tr>
+                                    <td><span t-esc="order.product_id.prod_name" /></td>
+                                    <td><span t-esc="order.customer_id.name" /></td>
+                                    <td><span t-esc="order.order_date" /></td>
+                                    <td><span t-esc="order.order_time" /></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

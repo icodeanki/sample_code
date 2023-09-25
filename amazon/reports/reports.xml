@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="paperformat_tax_invoice_export_report" model="report.paperformat">
+        <field name="name">tax_invoice_export_report</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">30</field>
+        <field name="margin_bottom">60</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">21</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="export_invoice_report_id" model="ir.actions.report">
+        <field name="name">Export Invoice</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">amazon.export_invoice_report</field>
+        <field name="report_file">amazon.export_invoice_report</field>
+        <field name="print_report_name">'Export Invoice'</field>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="amazon.paperformat_tax_invoice_export_report"/>
+    </record>
+
+    <record id="invoice_report_id" model="ir.actions.report">
+        <field name="name">Invoice Report</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">amazon.invoice_report</field>
+        <field name="report_file">amazon.invoice_report</field>
+        <field name="print_report_name">'Invoice Report'</field>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="amazon.paperformat_tax_invoice_export_report"/>
+    </record>
+
+    <record id="purchase_order_report_id" model="ir.actions.report">
+        <field name="name">Purchase Order Invoice</field>
+        <field name="model">purchase.order</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">amazon.export_purchase_order_report</field>
+        <field name="report_file">amazon.export_purchase_order_report</field>
+        <field name="print_report_name">'Purchase Order Invoice'</field>
+        <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="amazon.paperformat_tax_invoice_export_report"/>
+    </record>
+
+    <record id="export_invoice_excel_report_id" model="ir.actions.report">
+        <field name="name">Export Excel Invoice</field>
+        <field name="model">amazon.customer</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">amazon.export_invoice_report_xls</field>
+        <field name="report_file">amazon.export_invoice_report_xls</field>
+        <field name="print_report_name">'Export Excel Invoice'</field>
+        <field name="binding_model_id" ref="amazon.model_amazon_customer"/>
+        <field name="binding_type">report</field>
+<!--        <field name="paperformat_id" ref="amazon.paperformat_tax_invoice_export_report"/>-->
+    </record>
+
+    <record id="amazon_customer_excel_report_id" model="ir.actions.report">
+        <field name="name">Customer Report Excel</field>
+        <field name="model">amazon.customer</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">amazon.amazon_customer_report_xls</field>
+        <field name="report_file">amazon.amazon_customer_report_xls</field>
+        <field name="print_report_name">'Customer Report Excel'</field>
+        <field name="binding_model_id" ref="amazon.model_amazon_customer"/>
+        <field name="binding_type">report</field>
+<!--        <field name="paperformat_id" ref="amazon.paperformat_tax_invoice_export_report"/>-->
+    </record>
+
+    <report
+            id="report_amazon_customer"
+            string="Customer details"
+            model="amazon.customer"
+            report_type="qweb-pdf"
+            name="amazon.customer_report"
+            file="amazon.customer_report"/>
+
+    <report
+            id="report_amazon_order"
+            string="Order details"
+            model="amazon.order"
+            report_type="qweb-pdf"
+            name="amazon.order_report"
+            file="amazon.order_report"/>
+
+</odoo>

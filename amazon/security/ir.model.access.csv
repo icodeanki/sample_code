@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.amazon.customer,access_amazon_customer,amazon.model_amazon_customer,base.group_user,1,1,1,1
+access.amazon.order,access_amazon_order,amazon.model_amazon_order,base.group_user,1,1,1,1
+access.cancel.order.wizards,access_cancel_order_wizards,amazon.model_cancel_order_wizards,base.group_user,1,1,1,1
+access.amazon.order.line,access_amazon_order_line,model_amazon_order_line,base.group_user,1,1,1,1
+access.amazon.product,access_amazon_product,model_amazon_product,base.group_user,1,1,1,1
+access.delete.product.wizards,access_delete_product_wizards,model_delete_product_wizards,base.group_user,1,1,1,1
+access.amazon.product.line,access_amazon_product_line,model_amazon_product_line,base.group_user,1,1,1,1
+access.update.age.wizards,access_update_age_wizards,model_update_age_wizards,base.group_user,1,1,1,1
+access.update.quantity.wizards,access_update_quantity_wizards,model_update_quantity_wizards,base.group_user,1,1,1,1
+access.sale.order.api.wizards,access_sale_order_api_wizards,model_sale_order_api_wizards,base.group_user,1,1,1,1
+access.sale.order.quality.check.wizards,access_sale_order_quality_check_wizards,model_sale_order_quality_check_wizards,base.group_user,1,1,1,1

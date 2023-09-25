@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="action_open_order" model="ir.actions.act_window">
+        <field name="name">Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">amazon.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[("product_id","=",active_id)]</field>
+        <field name="help" type="html">
+            <p class="">
+                CREATE A CUSTOMERS ORDER....!!!
+            </p>
+        </field>
+    </record>
+
+    <record id="view_amazon_product_tree" model="ir.ui.view">
+        <field name="name">amazon.product.tree</field>
+        <field name="model">amazon.product</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="prod_name" />
+                <field name="prod_price" />
+                <field name="quantity"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_amazon_product_form" model="ir.ui.view">
+        <field name="name">amazon.product.form</field>
+        <field name="model">amazon.product</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="%(action_amazon_delete_product_wizards)d" type="action" string="Delete Product"></button>
+                    <button name="check_status" type="object" string="check status"></button>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(action_open_order)d" type="action" class="oe_stat_button" icon="fa-calendar">
+                            <div class="o_stat_info">
+                                <field name="order_count"/>
+                                <span class="o_stat_text">order</span>
+                            </div>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="prod_name"/>
+                            <field name="prod_price"/>
+                        </group>
+                        <group>
+                            <field name="quantity"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="product_records" string="Product Records">
+                            <field name="amazon_prod_id">
+                                <tree editable="top">
+                                    <field name="name"/>
+                                    <field name="quantity"/>
+                                    <button name="set_quantity" type="object" string="Click"></button>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_amazon_product" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">amazon.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p>
+                CREATE A Product....!!!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_product_details"
+              name="Product Details"
+              action="action_amazon_product"
+              parent="menu_product"
+              sequence="0"/>
+
+
+</odoo>

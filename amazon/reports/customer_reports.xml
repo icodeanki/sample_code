@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    <template id="amazon_customer_report">-->
+    <!--        <t t-call="web.html_container">-->
+    <!--            <t t-foreach="docs" t-as="doc">-->
+    <!--                <h2>Customer</h2>-->
+    <!--            </t>-->
+    <!--        </t>-->
+    <!--    </template>-->
+
+    <template id="customer_report">
+        <t t-call="web.external_layout">
+            <t t-call="web.html_container">
+                <div class="page">
+                    <h1>Customer Report</h1>
+                    <table class="table">
+                        <tr>
+                            <th>Reference</th>
+                            <th>Name</th>
+                            <th>Contact</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                        </tr>
+                        <t t-foreach="docs" t-as="doc">
+                            <tr>
+                                <td>
+                                    <span t-esc="doc.ref"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.contact"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.gender"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.age"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>

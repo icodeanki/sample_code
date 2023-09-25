@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="customer_view" name="customer view">
+        <t t-call="website.layout">
+            <div style="width:700px;border:1px solid #aaabad;margin:100px 300px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                <table style="width:100%;">
+                    <t t-foreach="cust_ids" t-as="rec">
+                        <tr>
+                            <td style="width:50%;text-align:right;padding:5px;">
+                                <span>
+                                    <strong>Customer Name:</strong>
+                                </span>
+                            </td>
+                            <td style="width:50%;text-align:left;padding:5px;">
+                                <span t-field="rec.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:50%;text-align:right;padding:5px;">
+                                <span>
+                                    <strong>Email:</strong>
+                                </span>
+                            </td>
+                            <td style="width:50%;text-align:left;padding:5px;">
+                                <span t-field="rec.email"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:50%;text-align:right;padding:5px;">
+                                <span>
+                                    <strong>Mobile:</strong>
+                                </span>
+                            </td>
+                            <td style="width:50%;text-align:left;padding:5px;">
+                                <span t-field="rec.mobile"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:50%;text-align:right;padding:5px;">
+                                <span>
+                                    <strong>GSTIN:</strong>
+                                </span>
+                            </td>
+                            <td style="width:50%;text-align:left;padding:5px;">
+                                <span t-field="rec.vat"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:50%;text-align:right;padding:5px;">
+                                <span>
+                                    <strong>GST Treatment</strong>
+                                </span>
+                            </td>
+                            <td style="width:50%;text-align:left;padding:5px;">
+                                <span t-field="rec.l10n_in_gst_treatment"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:50%;text-align:right;padding:5px;">
+                                <span>
+                                    <strong>Address:</strong>
+                                </span>
+                            </td>
+                            <td style="width:50%;text-align:left;padding:5px;">
+                                <span t-field="rec.street"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:50%;text-align:right;padding:5px;">
+                                <span>
+                                    <strong>State:</strong>
+                                </span>
+                            </td>
+                            <td style="width:50%;text-align:left;padding:5px;">
+                                <span t-field="rec.state_id.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:50%;text-align:right;padding:5px;">
+                                <span>
+                                    <strong>Country:</strong>
+                                </span>
+                            </td>
+                            <td style="width:50%;text-align:left;padding:5px;">
+                                <span t-field="rec.country_id.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:50%;text-align:right;padding:5px;">
+                                <span>
+                                    <strong>Zip Code:</strong>
+                                </span>
+                            </td>
+                            <td style="width:50%;text-align:left;padding:5px;">
+                                <span t-field="rec.zip"/>
+                            </td>
+                        </tr>
+
+                        <!--                        <tr>-->
+                        <!--                            <td style="width:50%;">-->
+                        <!--                                <div style="margin:31px 41px;">-->
+                        <!--                                    <div style="padding:3px;">-->
+                        <!--                                        <span><strong>Customer Name:</strong></span>-->
+                        <!--                                        <span t-field="rec.name"/>-->
+                        <!--                                    </div>-->
+                        <!--                                    <br/>-->
+                        <!--                                    <div style="padding:3px;">-->
+                        <!--                                        <span><strong>Email:</strong></span>-->
+                        <!--                                        <span t-field="rec.email"/>-->
+                        <!--                                    </div>-->
+                        <!--                                    <br/>-->
+                        <!--                                    <div style="padding:3px;">-->
+                        <!--                                        <span><strong>Mobile:</strong></span>-->
+                        <!--                                        <span t-field="rec.mobile"/>-->
+                        <!--                                    </div>-->
+                        <!--                                    <br/>-->
+                        <!--                                    <div style="padding:3px;">-->
+                        <!--                                        <span><strong>Mobile:</strong></span>-->
+                        <!--                                        <span t-field="rec.state_id.name"/>-->
+                        <!--                                    </div>-->
+                        <!--                                    <br/>-->
+                        <!--                                </div>-->
+                        <!--                            </td>-->
+                        <!--                            <td style="width:50%;">-->
+                        <!--                                <div style="margin:31px 41px;">-->
+                        <!--                                    <div style="padding:3px;">-->
+                        <!--                                        <span><strong>GSTIN:</strong></span>-->
+                        <!--                                        <span t-field="rec.vat"/>-->
+                        <!--                                    </div>-->
+                        <!--                                    <br/>-->
+                        <!--                                    <div style="padding:3px;">-->
+                        <!--                                        <span><strong>GST Treatment:</strong></span>-->
+                        <!--                                        <span t-field="rec.l10n_in_gst_treatment"/>-->
+                        <!--                                    </div>-->
+                        <!--                                    <br/>-->
+                        <!--                                    <div style="padding:3px;">-->
+                        <!--                                        <span><strong>Address:</strong></span>-->
+                        <!--                                        <span t-field="rec.street"/>-->
+                        <!--                                    </div>-->
+                        <!--                                    <br/>-->
+                        <!--                                    <div style="padding:3px;">-->
+                        <!--                                        <span><strong>Country:</strong></span>-->
+                        <!--                                        <span t-field="rec.country_id.name"/>-->
+                        <!--                                    </div>-->
+                        <!--                                    <br/>-->
+                        <!--                                </div>-->
+                        <!--                            </td>-->
+                        <!--                        </tr>-->
+                    </t>
+                </table>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="customer_invoice_paperformat" model="report.paperformat">
+        <field name="name">Customer Invoice</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">40</field>
+        <field name="margin_bottom">42</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">40</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="customer_invoice_report" model="ir.actions.report">
+        <field name="name">Customer Invoice</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">aashni.customer_invoice_form</field>
+        <field name="report_file">aashni.customer_invoice_form</field>
+        <field name="print_report_name">'Customer Invoice'</field>
+        <field name="paperformat_id" ref="aashni.customer_invoice_paperformat"/>
+        <field name="binding_model_id" ref="sale.model_account_move"/>
+    </record>
+
+    <template id="customer_invoice_form">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <table style="width:100%; border: 1px solid black; border-collapse: collapse;">
+                        <tr style="border: 2px solid black; border-collapse: collapse; height: 60px;">
+                            <th width="50%" style="text-align: left;" class="text-left">
+                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"
+                                     alt="aashni +Co"/>
+                            </th>
+                            <th style="text-align: right;padding-top: 20px;padding-right:25px;" width="50%">
+                            </th>
+                        </tr>
+                    </table>
+                    <table style="width:100%; border: 2px solid black; border-collapse: collapse; border-top: hidden;">
+                        <tr>
+                            <th colspan="3" style="border: 2px solid black; border-collapse: collapse; height: 50px;"/>
+                        </tr>
+                        <tr style="border: 2px solid black; border-collapse: collapse;">
+                            <th style="text-align: left;border: 2px solid black; border-collapse: collapse;"
+                                width="32%">Bill to:
+                            </th>
+                            <th style="text-align: left;border: 2px solid black; border-collapse: collapse;"
+                                width="32%">Ship To:
+                            </th>
+                            <td style="text-align: left; border-top:hidden; border-bottom:hidden" width="32%">Order
+                                Number:
+                                <t t-esc="o.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Name: <t t-esc="o.partner_id.name"/></td>
+                            <td style="border-left: 2px solid black; border-right: 2px solid black">Name: <t t-esc="o.partner_shipping_id.name"/></td>
+                            <td>Date / Time: <t t-esc="o.invoice_date"/></td>
+                        </tr>
+                        <tr>
+                            <td>State: <t t-esc="o.partner_id.state_id.name"/></td>
+                            <td style="border-left: 2px solid black; border-right: 2px solid black">Address Line 1: <t t-esc="o.partner_shipping_id.street"/></td>
+                            <td>Store Code:</td>
+                        </tr>
+                        <tr>
+                            <td>Country: <t t-esc="o.partner_id.country_id.name"/></td>
+                            <td style="border-left: 2px solid black; border-right: 2px solid black">Address Line 2: <t t-esc="o.partner_shipping_id.street2"/></td>
+                            <td>Associate: <t t-esc="o.invoice_user_id.name"/> </td>
+                        </tr>
+                        <tr>
+                            <td>GSTIN: <t t-esc="o.partner_id.vat"/></td>
+                            <td style="border-left: 2px solid black; border-right: 2px solid black">State: <t t-esc="o.partner_shipping_id.state_id.name"/></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Contact Number: <t t-esc="o.partner_id.mobile"/></td>
+                            <td style="border-left: 2px solid black; border-right: 2px solid black">Country: <t t-esc="o.partner_shipping_id.country_id.name"/></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style="border-left: 2px solid black; border-right: 2px solid black">Contact Number: <t t-esc="o.partner_shipping_id.mobile"/></td>
+                            <td style="border-bottom: hidden;"></td>
+                        </tr>
+                        <tr>
+                            <th colspan="3" style="border: 2px solid black; border-collapse: collapse; height: 25px;"/>
+                        </tr>
+                    </table>
+                    <table style="width:100%;border: 2px solid black; border-collapse: collapse; border-top: hidden;">
+                        <tr style="border: 2px solid black; border-collapse: collapse;">
+                            <th class="text-center" style="width:9%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;">Item#
+                            </th>
+                            <th class="text-center" style="width:11%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;">
+                                Designer
+                            </th>
+                            <th class="text-center" style="width:14%; max-width:14%;border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;word-wrap: break-word;">
+                                Description
+                            </th>
+                            <th class="text-center" style="width:9%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;">Unit
+                                Price
+                            </th>
+                            <th class="text-center" style="width:5%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;">Qty</th>
+                            <th class="text-center" style="width:9%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;">Taxable
+                                Value
+                            </th>
+                            <th class="text-center" style="width:8%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;">CGST
+                            </th>
+                            <th class="text-center" style="width:9%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;">Amount
+                            </th>
+                            <th class="text-center" style="width:8%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;">SGST
+                            </th>
+                            <th class="text-center" style="width:9%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;">Amount
+                            </th>
+                            <th class="text-center" style="width:10%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;">Total
+                            </th>
+                        </tr>
+                        <t t-set="sr_no" t-value="1"/>
+                        <t t-set="total_qty" t-value="0"/>
+                        <t t-set="total_cgst" t-value="0"/>
+                        <t t-set="total_sgst" t-value="0"/>
+                        <t t-set="total_igst" t-value="0"/>
+                        <t t-foreach="o.invoice_line_ids" t-as="line">
+                            <tr style="border: 2px solid black; border-collapse: collapse;">
+                                <td class="text-center" style="width:9%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;"
+                                    height="25px">
+                                    <t t-esc="line.product_id.default_code"/>
+                                </td>
+                                <td class="text-center" style="width:11%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;"
+                                    height="25px">
+                                    <t t-esc="line.product_id.designer_name.name"/>
+                                </td>
+                                <td class="text-center" style="width:14%; max-width:90px;border: 2px solid black; border-collapse: collapse;padding:3px;text-align:center;word-wrap: break-word;"
+                                    height="25px">
+                                    <t t-esc="line.product_id.description_sale"/>
+                                </td>
+                                <td class="text-center" style="width:9%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;"
+                                    height="25px">
+                                    <t t-esc="line.price_unit"/>
+                                </td>
+                                <td class="text-center" style="width:5%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;"
+                                    height="25px">
+                                    <t t-esc="int(line.quantity)"/>
+                                </td>
+                                <td class="text-center" style="width:9%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;"
+                                    height="25px">
+                                    <t t-esc="line.price_unit"/>
+                                </td>
+                                <td class="text-center" style="width:8%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;"
+                                    height="25px">
+                                    <t t-esc="line.tax_ids.name"/>
+                                </td>
+                                <td class="text-center" style="width:9%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;"
+                                    height="25px">
+                                    <t t-set="number" t-value="float(line.tax_ids.name.split(' ')[-1].replace('%', ''))"/>
+                                    <t t-esc="int((line.price_unit * number)/100)" />
+                                </td>
+                                <td class="text-center" style="width:8%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;"
+                                    height="25px">
+                                    <t t-esc="line.tax_ids.name"/>
+                                </td>
+                                <td class="text-center" style="width:9%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;"
+                                    height="25px">
+                                    <t t-set="number" t-value="float(line.tax_ids.name.split(' ')[-1].replace('%', ''))"/>
+                                    <t t-esc="int((line.price_unit * number)/100)" />
+                                </td>
+                                <td class="text-center" style="width:10%; border: 2px solid black; border-collapse: collapse;padding:1px;text-align:center;"
+                                    height="25px">
+                                    <t t-esc="o.amount_total"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <tr style="border: 2px solid black; border-collapse: collapse;">
+                            <th colspan="6"
+                                style="text-align: right;border: 2px solid black; border-collapse: collapse;">Subtotals:
+                            </th>
+                            <td class="text-center"
+                                style="border: 2px solid black; border-collapse: collapse; border-right: hidden;"><t t-esc="o.amount_total"/></td>
+                            <td class="text-center"
+                                style="border: 2px solid black; border-collapse: collapse; border-right: hidden;"></td>
+                            <td class="text-center"
+                                style="border: 2px solid black; border-collapse: collapse; border-right: hidden;"></td>
+                            <td class="text-center"
+                                style="border: 2px solid black; border-collapse: collapse; border-right: hidden;"></td>
+                            <td class="text-center" style="border: 2px solid black; border-collapse: collapse;"></td>
+                        </tr>
+
+                        <tr style="border: 2px solid black; border-collapse: collapse;">
+                            <td style="border: 2px solid black; border-collapse: collapse;" colspan="6"></td>
+                            <td style="border: 2px solid black; border-collapse: collapse; border-right:hidden"
+                                colspan="3">Grand Total (INR): <t t-esc="o.amount_total"/>
+                            </td>
+                            <td style="border: 2px solid black; border-collapse: collapse;" colspan="2"></td>
+                        </tr>
+                        <tr style="border: 2px solid black; border-collapse: collapse; height: 60px;">
+                            <td colspan="6"
+                                style="border: 2px solid black; border-collapse: collapse; border-right: hidden;">Note:
+                            </td>
+                            <td colspan="5"
+                                style="border: 2px solid black; border-collapse: collapse; border-right: hidden; padding-left:150px;">
+                                Deposite: <t t-esc="o.amount_total"/>
+                            </td>
+<!--                            <td colspan="2" style="border: 2px solid black; border-collapse: collapse;"></td>-->
+                        </tr>
+                        <tr style="border: 2px solid black; border-collapse: collapse; border-top: hidden; height: 60px;">
+                            <td colspan="6"></td>
+                            <td colspan="5"
+                                style="border: 2px solid black; border-collapse: collapse; border-left: hidden;border-right: hidden; padding-left:150px;">
+                                Balance: <t t-esc="o.amount_residual"/>
+                            </td>
+<!--                            <td colspan="2"></td>-->
+                        </tr>
+                        <tr style="border: 2px solid black; border-collapse: collapse; height: 50px;">
+                            <td colspan="6" style="border: 2px solid black; border-collapse: collapse;">
+                                <span>GSTIN: <t t-esc="o.partner_id.vat"/></span>
+                                <br/>
+                                <span>CIN No.:</span>
+                                <br/>
+                                <span>Three Guards Clothing Private Limited</span>
+                                <br/>
+                                <span>Address: 402, HAMILTON COURT, TAGORE ROAD,</span>
+                                <br/>
+                                <span>SANTACRUZ WEST, Mumbai Suburban, Maharashtra, 400054</span>
+                                <br/>
+                                <span>T: 022-98765432 | Email: xyz@aashniandco.com</span>
+                                <br/>
+                            </td>
+                            <td colspan="5" style="border: 2px solid black; border-collapse: collapse;">
+                                <span style="display: block; text-align: center;">For Three Guards Clothing Private
+                                    Limited
+                                </span>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <span style="display: block; text-align: center;">Authorised Signatory</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

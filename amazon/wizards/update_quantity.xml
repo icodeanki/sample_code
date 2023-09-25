@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_update_quantity_wizards_form" model="ir.ui.view">
+        <field name="name">Amazon Update Quantity Wizards Form</field>
+        <field name="model">update.quantity.wizards</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="quantity"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="update_quantity" type="object" string="Update quantity"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

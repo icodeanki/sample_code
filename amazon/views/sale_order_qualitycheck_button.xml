@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_sale_order_quality_check_button" model="ir.ui.view">
+        <field name="name">Sale Order Quality Check Button View</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_subtotal']"
+                   position="after">
+                <button name="open_wizards" type="object" string="Quality Check"/>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_subtotal']"
+                   position="after">
+                <field name="is_selected" widget="boolean_checkbox" optional="hide"/>
+            </xpath>
+            <xpath expr="//form/sheet/div/button[@name='action_preview_sale_order']" position="before">
+                <button name="quality_status" type="object" class="oe_stat_button" icon="fa-check" attrs="{'invisible': [('button_state', '=', 'Not Check')]}">
+                    <div class="o_stat_info">
+                        <field name="button_state" decoration-success="button_state == 'Quality Check'"/>
+                    </div>
+                </button>
+            </xpath>
+            <xpath expr="//form/sheet/div/button[@name='action_preview_sale_order']" position="before">
+                <button name="quality_status" type="object" class="oe_stat_button" icon="fa-close" attrs="{'invisible': [('button_state', '=', 'Quality Check')]}">
+                    <div class="o_stat_info">
+                        <field name="button_state" decoration-danger="button_state == 'Not Check'"/>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

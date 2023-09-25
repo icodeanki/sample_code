@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="seq_amazon_customer" model="ir.sequence">
+            <field name="name">Amazon Customer Sequence</field>
+            <field name="code">amazon.customer</field>
+            <field name="prefix">AC</field>
+            <field name="padding">5</field>
+            <field eval="False" name="company_id"/>
+    </record>
+</odoo>

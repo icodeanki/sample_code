@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_update_age_wizards_form" model="ir.ui.view">
+        <field name="name">Amazon Update Age Wizards Form</field>
+        <field name="model">update.age.wizards</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="age_id"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="update_age" type="object" string="Update Age" help="On clicking this data will be updated"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>
