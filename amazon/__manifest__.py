@@ -1,5 +1,5 @@
 {
-    'name': 'Amazon System',
+    'name': 'Amazon',
     'version': '1.0.0',
     'category': 'Retail',
     'author': 'Ankita',
